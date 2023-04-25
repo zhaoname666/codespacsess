@@ -357,7 +357,7 @@ layui.use(['form', 'layedit', 'laydate'], function(){
            if(e.target.innerHTML=='下一页'){
                 $.ajax({
         type:'get',
-        url:'https://mp3.zzgoodqc.cn/songs?page='+(n+1)+"&pageSize=5",
+        url:'https://mp3.zzgoodqc.cn/api/songs?page='+(n+1)+"&pageSize=5",
         dataType:'json',
         success:function(res){
           xs(res.data)
@@ -374,7 +374,7 @@ layui.use(['form', 'layedit', 'laydate'], function(){
     }else{
    $.ajax({
         type:'get',
-        url:'https://mp3.zzgoodqc.cn/api/songs?page='+(n-1)+"&pageSize=5",
+        url:'http://81.68.107.245/api/songs?page='+(n-1)+"&pageSize=5",
         dataType:'json',
         success:function(res){
           xs(res.data)
@@ -402,7 +402,7 @@ layui.use(['form', 'layedit', 'laydate'], function(){
     if(e.target.innerHTML=='删除'){
       if(confirm('确定')){
       $.ajax({
-        url: "https://mp3.zzgoodqc.cn/api/songs/"+id,
+        url: "http://81.68.107.245/api/songs/"+id,
         type: "delete",
         dataType: "json",
         success: function (res) {
@@ -417,7 +417,7 @@ layui.use(['form', 'layedit', 'laydate'], function(){
        $(".n1").toggle()
        $('#noid').show()
       $.ajax({
-        url: "https://mp3.zzgoodqc.cn/api/songs/"+id,
+        url: "http://81.68.107.245/api/songs/"+id,
         type: "get",
         dataType: "json",
         success: function (res) {
@@ -439,7 +439,7 @@ layui.use(['form', 'layedit', 'laydate'], function(){
         $("#modify").show()
         $('form').prepend(``)
          $.ajax({
-        url: "https://mp3.zzgoodqc.cn/api/songs/"+id,
+        url: "http://81.68.107.245/api/songs/"+id,
         type: "get",
         dataType: "json",
         success: function (res) {
@@ -459,7 +459,7 @@ layui.use(['form', 'layedit', 'laydate'], function(){
 
     function fun() {
       $.ajax({
-        url: "https://mp3.zzgoodqc.cn/api/songs?page=1&pageSize=5",
+        url: "http://81.68.107.245/api/songs?page=1&pageSize=5",
         type: "get",
         dataType: "json",
         success: function (res) {
