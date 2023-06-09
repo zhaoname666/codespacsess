@@ -104,6 +104,8 @@
           arrS.push(res);
           localStorage.setItem("arrSS", JSON.stringify(arrS));
           fun(arrS);
+          console.log($(this));
+          $(this).val("");
         }
       });
 
@@ -112,14 +114,13 @@
         let id = +$(this).attr("data-id");
         arrS = JSON.parse(localStorage.getItem("arrSS"));
         $("#fonss").html(id);
-        console.log(arrS.length, id);
+
         if ($(this).prop("checked")) {
           arrS[id].type = true;
         } else {
           arrS[id].type = false;
         }
 
-        localStorage.setItem("arrSS", JSON.stringify(arrS));
         if ($(this).prop("checked")) {
           $(this).parent().addClass("noe");
         } else {
@@ -136,6 +137,7 @@
         } else {
           $("#qx").addClass("back");
         }
+        localStorage.setItem("arrSS", JSON.stringify(arrS));
       });
       //sa
       $("button")
@@ -175,15 +177,13 @@
           localStorage.setItem("arrSS", JSON.stringify(arrS));
           fun(arrS);
         });
-      $("#box2")
-        .off()
-        .on("click", "b", function () {
-          let id = $(this).attr("data-id");
-          arrS = JSON.parse(localStorage.getItem("arrSS"));
-          arrS.splice(id, 1);
-          localStorage.setItem("arrSS", JSON.stringify(arrS));
-          fun(arrS);
-        });
+      $("#box2").on("click", "b", function () {
+        let id = $(this).attr("data-id");
+        arrS = JSON.parse(localStorage.getItem("arrSS"));
+        arrS.splice(id, 1);
+        localStorage.setItem("arrSS", JSON.stringify(arrS));
+        fun(arrS);
+      });
       function fun(n) {
         n = JSON.parse(localStorage.getItem("arrSS"));
         $("#fonss").html(n.length);
