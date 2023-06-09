@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+  </head>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    #box {
+      width: 200px;
+      border-radius: 20px;
+      padding: 25px;
+
+      margin: auto;
+      background-image: linear-gradient(90deg, #ffecd2 0%, #fcb69f 100%);
+    }
+
+    input {
+      border: none;
+      outline: none;
+      height: 30px;
+      margin-bottom: 5px;
+      padding-left: 10px;
+    }
+    p {
+      margin-left: 16px;
+      width: 170px;
+      height: 50px;
+      background-color: white;
+      border-bottom: 1px solid rgb(231, 231, 231);
+    }
+    p input {
+      margin: 0 10px;
+      transform: translate(0, 10px);
+    }
+    #qx {
+      color: rgb(231, 233, 235);
+    }
+    #box2 b {
+      float: right;
+      transform: translate(-5px, 1px);
+    }
+    .noe {
+      color: rgb(231, 233, 235) !important;
+    }
+    .back {
+      color: black !important;
+    }
+    button {
+      margin-left: 20px;
+      background-color: white;
+      border: none;
+    }
+  </style>
+  <body>
+    <div id="box">
+      <b id="qx">></b>
+      <input type="text" id="inputS" />
+      <div id="box2"></div>
+      <div id="box3">
+        <span style="margin-left: 20px"><span id="fonss">0</span>未完成</span
+        ><button>所有</button><button>未完成</button><button>已完成</button
+        ><button>清除完成项</button>
+      </div>
+    </div>
+  </body>
+  <script>
+    let n = 1;
+    let arrList = [];
+
+    $(function () {
+      $("#inputS").keydown(function (e) {
+        if (e.keyCode == 13) {
+          arrList.push({
+            name: $(this).val(),
+            type: false,
+            id: n++,
+          });
+          fun(arrList);
+          $("#fonss").html(arrList.length);
+        }
+      });
+
+      //2
+      $("#box2").on("click", "input", function (e) {
+        let id = $(this).attr("data-id");
+        arrList[id].type = true;
+        if ($(this).prop("checked")) {
+          $(this).parent().addClass("noe");
+        } else {
+          $(this).parent().removeClass("noe");
+        }
+      });
+      // quanx
+      $("#box2").on("change", "input", function () {
+        let i = 0;
+        $("#box2 input").each(function () {
+          if ($(this).prop("checked") == true) {
+            i++;
+            $("#fonss").html($("#box2 input").length - 1);
+            console.log($("#fonss").html());
+          }
+        });
+
+        if (i < $("#box2 input").length) {
+          $("#qx").addClass("back");
+        } else {
+          $("#qx").removeClass("back");
+        }
+        console.log(i);
+      });
+      //sa
+      $("button")
+        .eq(0)
+        .click(function () {
+          fun(arrList);
+        });
+      $("button")
+        .eq(1)
+        .click(function () {
+          let arr = arrList.filter((item) => {
+            return item.type == false;
+          });
+          fun(arr);
+        });
+      $("button")
+        .eq(2)
+        .click(function () {
+          let arr = arrList.filter((item) => {
+            return item.type == true;
+          });
+          fun(arr);
+        });
+      $("button")
+        .eq(3)
+        .click(function () {
+          let arr = arrList.filter((item) => {
+            return item.type == false;
+          });
+
+          fun(arr);
+        });
+    });
+    function fun(n) {
+      let html = "";
+      n.forEach((item, index) => {
+        html += `
+            <p><input type="checkbox" data-id="${index}" />${item.name}<b data-id="${index}">x</b></p>
+            `;
+      });
+      $("#box2").html(html);
+    }
+  </script>
+</html>
