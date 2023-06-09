@@ -15,7 +15,7 @@
       width: 200px;
       border-radius: 20px;
       padding: 25px;
-
+      cursor: pointer;
       margin: auto;
       background-image: linear-gradient(90deg, #ffecd2 0%, #fcb69f 100%);
     }
@@ -39,14 +39,15 @@
       transform: translate(0, 10px);
     }
     #qx {
-      color: rgb(231, 233, 235);
+      color: rgb(213, 215, 218);
     }
     #box2 b {
       float: right;
       transform: translate(-5px, 1px);
     }
     .noe {
-      color: rgb(231, 233, 235) !important;
+      color: rgb(196, 197, 199) !important;
+      text-decoration: line-through !important;
     }
     .back {
       color: black !important;
@@ -55,11 +56,12 @@
       margin-left: 20px;
       background-color: white;
       border: none;
+      cursor: pointer;
     }
   </style>
   <body>
     <div id="box">
-      <b id="qx">></b>
+      <b id="qx">▶</b>
       <input type="text" id="inputS" />
       <div id="box2"></div>
       <div id="box3">
@@ -71,89 +73,152 @@
   </body>
   <script>
     let n = 1;
-    let arrList = [];
+    let arrS = [
+      {
+        name: "张三",
+        type: false,
+        id: 0,
+      },
+    ];
+    let List = 0;
 
     $(function () {
+      if (localStorage.getItem("arrSS") == null) {
+        localStorage.setItem("arrSS", JSON.stringify(arrS));
+      }
+      fun(arrS);
+      if ($("#box2").html() != "") {
+        $("#qx").html("▼");
+      } else {
+        $("#qx").html("▶");
+      }
       $("#inputS").keydown(function (e) {
         if (e.keyCode == 13) {
-          arrList.push({
+          $("#qx").html("▼");
+          let res = {
             name: $(this).val(),
             type: false,
             id: n++,
-          });
-          fun(arrList);
-          $("#fonss").html(arrList.length);
+          };
+          arrS = JSON.parse(localStorage.getItem("arrSS"));
+          arrS.push(res);
+          localStorage.setItem("arrSS", JSON.stringify(arrS));
+          fun(arrS);
         }
       });
 
       //2
-      $("#box2").on("click", "input", function (e) {
-        let id = $(this).attr("data-id");
-        arrList[id].type = true;
+      $("#box2").on("change", "input", function (e) {
+        let id = +$(this).attr("data-id");
+        arrS = JSON.parse(localStorage.getItem("arrSS"));
+        $("#fonss").html(id);
+        console.log(arrS.length, id);
+        if ($(this).prop("checked")) {
+          arrS[id].type = true;
+        } else {
+          arrS[id].type = false;
+        }
+
+        localStorage.setItem("arrSS", JSON.stringify(arrS));
         if ($(this).prop("checked")) {
           $(this).parent().addClass("noe");
         } else {
           $(this).parent().removeClass("noe");
         }
-      });
-      // quanx
-      $("#box2").on("change", "input", function () {
         let i = 0;
         $("#box2 input").each(function () {
           if ($(this).prop("checked") == true) {
             i++;
-            $("#fonss").html($("#box2 input").length - 1);
-            console.log($("#fonss").html());
           }
         });
-
         if (i < $("#box2 input").length) {
-          $("#qx").addClass("back");
-        } else {
           $("#qx").removeClass("back");
+        } else {
+          $("#qx").addClass("back");
         }
-        console.log(i);
       });
       //sa
       $("button")
         .eq(0)
         .click(function () {
-          fun(arrList);
+          arrS = JSON.parse(localStorage.getItem("arrSS"));
+          fun(arrS);
         });
       $("button")
         .eq(1)
         .click(function () {
-          let arr = arrList.filter((item) => {
+          arrS = JSON.parse(localStorage.getItem("arrSS"));
+          let arr = arrS.filter((item) => {
             return item.type == false;
           });
-          fun(arr);
+          fun2(arr);
         });
+
       $("button")
         .eq(2)
         .click(function () {
-          let arr = arrList.filter((item) => {
+          arrS = JSON.parse(localStorage.getItem("arrSS"));
+
+          let arr = arrS.filter((item) => {
             return item.type == true;
           });
-          fun(arr);
+          fun2(arr);
         });
       $("button")
         .eq(3)
         .click(function () {
-          let arr = arrList.filter((item) => {
+          arrS = JSON.parse(localStorage.getItem("arrSS"));
+          let arr = arrS.filter((item) => {
             return item.type == false;
           });
-
-          fun(arr);
+          arrS = arr;
+          localStorage.setItem("arrSS", JSON.stringify(arrS));
+          fun(arrS);
         });
-    });
-    function fun(n) {
-      let html = "";
-      n.forEach((item, index) => {
-        html += `
+      $("#box2")
+        .off()
+        .on("click", "b", function () {
+          let id = $(this).attr("data-id");
+          arrS = JSON.parse(localStorage.getItem("arrSS"));
+          arrS.splice(id, 1);
+          localStorage.setItem("arrSS", JSON.stringify(arrS));
+          fun(arrS);
+        });
+      function fun(n) {
+        n = JSON.parse(localStorage.getItem("arrSS"));
+        $("#fonss").html(n.length);
+        if (n != null) {
+          let html = "";
+          n.forEach((item, index) => {
+            if (item.type) {
+              html += `
+            <p   class="noe"><input type="checkbox" checked data-id="${index}" />${item.name}<b data-id="${index}">x</b></p>
+            `;
+            } else {
+              html += `
             <p><input type="checkbox" data-id="${index}" />${item.name}<b data-id="${index}">x</b></p>
             `;
-      });
-      $("#box2").html(html);
-    }
+            }
+          });
+
+          $("#box2").html(html);
+        }
+      }
+      function fun2(n) {
+        let html = "";
+        n.forEach((item, index) => {
+          if (item.type) {
+            html += `
+            <p   class="noe"><input type="checkbox" checked data-id="${index}" />${item.name}<b data-id="${index}">x</b></p>
+            `;
+          } else {
+            html += `
+            <p><input type="checkbox" data-id="${index}" />${item.name}<b data-id="${index}">x</b></p>
+            `;
+          }
+        });
+        $("#box2").html(html);
+      }
+    });
   </script>
 </html>
