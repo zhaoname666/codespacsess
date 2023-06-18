@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+  </head>
+  <body>
+    <!-- <ul class="home-article-list">
+                <li class="home-article-item">
+                  <i class="fas fa-thumbtack top-icon"></i>
+
+                  <h3 class="home-article-title">
+                    <a href="/p/7e8c.html"> 开发随记 </a>
+                  </h3>
+
+                  <div class="home-article-content keep-markdown-body">
+                    <p>📒 记录每日开发过程中的一些碎片，持续更新</p>
+                  </div>
+
+                  <div class="home-article-meta-info-container">
+                    <div class="home-article-meta-info">
+                      <span>
+                        <i class="fas fa-history"></i>&nbsp;
+                        <span
+                          class="home-article-date"
+                          data-updated="Thu Feb 23 2023 23:00:00 GMT+0000"
+                        >
+                          2023-02-23
+                        </span>
+                      </span>
+
+                      <span class="home-article-category"
+                        ><i class="fas fa-folder"></i>&nbsp;
+                        <ul>
+                          <li>
+                            <a
+                              href="/categories/%E6%97%A5%E5%B8%B8%E5%BC%80%E5%8F%91/"
+                              >日常开发</a
+                            >&nbsp;
+                          </li>
+                        </ul>
+                      </span>
+
+                      <span class="home-article-tag">
+                        <i class="fas fa-tags"></i>&nbsp;
+                        <ul>
+                          <li><a href="/tags/dev/">dev</a>&nbsp;</li>
+                        </ul>
+                      </span>
+                    </div>
+
+                    <a class="read-more" href="/p/7e8c.html"
+                      >阅读全文&nbsp;<i class="fas fa-angle-right"></i
+                    ></a>
+                  </div>
+                </li>
+
+                <li class="home-article-item">
+                  <h3 class="home-article-title">
+                    <a href="/p/59086.html"> RocketMQ分布式事务原理 </a>
+                  </h3>
+
+                  <div class="home-article-content keep-markdown-body">
+                    分布式事务常见的方案有TCC（Try-Confirm-Cancel），XA两阶段提交方案，可靠消息最终一致性方案，最大努力通知方案等等。其中可靠消息最终一致性方案主要就可以依靠RocketMQ来做，因为RocketMQ支持消息事务。先上一张图：Roc...
+                  </div>
+
+                  <div class="home-article-meta-info-container">
+                    <div class="home-article-meta-info">
+                      <span>
+                        <i class="fas fa-history"></i>&nbsp;
+                        <span
+                          class="home-article-date"
+                          data-updated="Tue May 30 2023 14:21:26 GMT+0000"
+                        >
+                          2023-05-30
+                        </span>
+                      </span>
+
+                      <span class="home-article-tag">
+                        <i class="fas fa-tags"></i>&nbsp;
+                        <ul>
+                          <li><a href="/tags/Java/">Java</a>&nbsp;</li>
+
+                          <li>
+                            |
+                            <a href="/tags/RocketMq/">RocketMq</a>&nbsp;
+                          </li>
+                        </ul>
+                      </span>
+                    </div>
+
+                    <a class="read-more" href="/p/59086.html"
+                      >阅读全文&nbsp;<i class="fas fa-angle-right"></i
+                    ></a>
+                  </div>
+                </li>
+
+                <li class="home-article-item">
+                  <h3 class="home-article-title">
+                    <a href="/p/21838.html"> RocketMQ消息丢失场景及解决办法 </a>
+                  </h3>
+
+                  <div class="home-article-content keep-markdown-body">
+                    <p>
+                      既然在项目中使用了MQ，那么就不可避免的需要考虑消息丢失问题。
+                    </p>
+                  </div>
+
+                  <div class="home-article-meta-info-container">
+                    <div class="home-article-meta-info">
+                      <span>
+                        <i class="fas fa-history"></i>&nbsp;
+                        <span
+                          class="home-article-date"
+                          data-updated="Tue May 30 2023 11:22:10 GMT+0000"
+                        >
+                          2023-05-30
+                        </span>
+                      </span>
+
+                      <span class="home-article-tag">
+                        <i class="fas fa-tags"></i>&nbsp;
+                        <ul>
+                          <li><a href="/tags/Java/">Java</a>&nbsp;</li>
+
+                          <li>
+                            |
+                            <a href="/tags/RocketMQ/">RocketMQ</a>&nbsp;
+                          </li>
+                        </ul>
+                      </span>
+                    </div>
+
+                    <a class="read-more" href="/p/21838.html"
+                      >阅读全文&nbsp;<i class="fas fa-angle-right"></i
+                    ></a>
+                  </div>
+                </li>
+
+                <li class="home-article-item">
+                  <h3 class="home-article-title">
+                    <a href="/p/26485.html"> Mysql：用覆盖索引解决回表查询 </a>
+                  </h3>
+
+                  <div class="home-article-content keep-markdown-body">
+                    <p>先要从 InnoDB 的索引实现说起，InnoDB 有两大类索引：</p>
+                    <ul>
+                      <li>聚集索引 (clustered index)</li>
+                      <li>普通索引 (secondary index)</li>
+                    </ul>
+                  </div>
+
+                  <div class="home-article-meta-info-container">
+                    <div class="home-article-meta-info">
+                      <span>
+                        <i class="fas fa-history"></i>&nbsp;
+                        <span
+                          class="home-article-date"
+                          data-updated="Mon May 29 2023 10:43:20 GMT+0000"
+                        >
+                          2023-05-29
+                        </span>
+                      </span>
+
+                      <span class="home-article-tag">
+                        <i class="fas fa-tags"></i>&nbsp;
+                        <ul>
+                          <li><a href="/tags/Java/">Java</a>&nbsp;</li>
+
+                          <li>
+                            |
+                            <a href="/tags/Mysql/">Mysql</a>&nbsp;
+                          </li>
+                        </ul>
+                      </span>
+                    </div>
+
+                    <a class="read-more" href="/p/26485.html"
+                      >阅读全文&nbsp;<i class="fas fa-angle-right"></i
+                    ></a>
+                  </div>
+                </li>
+
+                <li class="home-article-item">
+                  <h3 class="home-article-title">
+                    <a href="/p/9949.html"> Spring容器创建流程 </a>
+                  </h3>
+
+                  <div class="home-article-content keep-markdown-body">
+                    参考地址：https://blog.csdn.net/weixin_37607613/article/details/126217559
+                    关注微信公众号，获取更多资源
+                  </div>
+
+                  <div class="home-article-meta-info-container">
+                    <div class="home-article-meta-info">
+                      <span>
+                        <i class="fas fa-history"></i>&nbsp;
+                        <span
+                          class="home-article-date"
+                          data-updated="Tue May 23 2023 16:08:43 GMT+0000"
+                        >
+                          2023-05-23
+                        </span>
+                      </span>
+
+                      <span class="home-article-tag">
+                        <i class="fas fa-tags"></i>&nbsp;
+                        <ul>
+                          <li><a href="/tags/Java/">Java</a>&nbsp;</li>
+
+                          <li>
+                            |
+                            <a href="/tags/Spring/">Spring</a>&nbsp;
+                          </li>
+                        </ul>
+                      </span>
+                    </div>
+
+                    <a class="read-more" href="/p/9949.html"
+                      >阅读全文&nbsp;<i class="fas fa-angle-right"></i
+                    ></a>
+                  </div>
+                </li>
+              </ul> -->
+    <ul id="myList"></ul>
+    <nav>
+      <button id="prev">上一页</button>
+      <span id="currentPage"></span>
+      <button id="next1">下一页</button>
+    </nav>
+  </body>
+  <script>
+    const myArray = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+    let itemsPerPage = 4;
+    let currentPage = 1;
+
+    $(document).ready(() => {
+      const myList = $("#myList");
+      const prevPageButton = $("#prevPageButton");
+      const nextPageButton = $("#nextPageButton");
+      const currentPageElement = $("#currentPage");
+
+      function displayItems() {
+        const startIndex = (currentPage - 1) * itemsPerPage;
+        const endIndex = startIndex + itemsPerPage;
+        const itemsToShow = myArray.slice(startIndex, endIndex);
+
+        myList.html("");
+        for (let i = 0; i < itemsToShow.length; i++) {
+          const listItem = $("<li></li>");
+          const itemText = itemsToShow[i];
+          listItem.text(itemText);
+          myList.append(listItem);
+          console.log(itemText);
+        }
+
+        currentPageElement.text(`第${currentPage}页`);
+      }
+
+      displayItems();
+
+      $("#next1").on("click", () => {
+        const maxPage = Math.ceil(myArray.length / itemsPerPage);
+        if (currentPage < maxPage) {
+          currentPage++;
+          displayItems();
+        }
+      });
+    });
+  </script>
+</html>

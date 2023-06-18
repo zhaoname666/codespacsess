@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <!-- 引入 layui.css -->
+    <!-- 引入 layui.css -->
+    <link href="//unpkg.com/layui@2.8.6/dist/css/layui.css" rel="stylesheet" />
+    <!-- 引入 layui.js -->
+    <script src="//unpkg.com/layui@2.8.6/dist/layui.js"></script>
+    <link rel="stylesheet" href="/xiangnu2/1.css" />
+    <link rel="stylesheet" href="./index.css" />
+  </head>
+  <body>
+    <div class="navs" id="navs">
+      <div class="layui-tab layui-tab-brief">
+        <h1>程序员小明</h1>
+        <ul class="layui-tab-title nav-no1">
+          <li class="layui-this sy">首页</li>
+          <li class="bx">标签</li>
+          <li class="tj"><a href="./2.html">添加文章</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="layui-tab-content subject">
+      <div class="layui-tab-item layui-show subject1">
+        <div id="subject2"></div>
+        <button
+          type="button"
+          class="layui-btn layui-btn-primary layui-btn-radius"
+          id="prev"
+        >
+          上一页
+        </button>
+        <button
+          type="button"
+          class="layui-btn layui-btn-primary layui-btn-radius"
+          id="next1"
+        >
+          下一页
+        </button>
+      </div>
+    </div>
+    <!-- //标签 -->
+    <div id="bx">
+      <div class="fade-in-down-animation">
+        <div class="tagcloud-container">
+          <div class="tagcloud-content">
+            <a href="" style="font-size: 1rem; margin: 30px 20px">日常开发</a>
+            <a href="" style="font-size: 1rem; margin: 30px 20px">java</a>
+            <a href="" style="font-size: 1rem; margin: 30px 20px">工具</a>
+            <a href="" style="font-size: 1rem; margin: 30px 20px">label</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer class="footer">
+      <div class="info-container">
+        <div class="copyright-info info-item">
+          &copy;
+
+          <span>2018</span> - 2023 &nbsp;<i
+            class="fas fa-heart icon-animate"
+          ></i>
+          &nbsp;<a href="/">小明</a>
+        </div>
+
+        <script
+          async
+          data-pjax
+          src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"
+        ></script>
+        <div class="website-count info-item">
+          访问人数&nbsp;<span id="busuanzi_value_site_uv"></span>&ensp;
+          总访问量&nbsp;<span id="busuanzi_value_site_pv"></span>
+        </div>
+
+        <div class="theme-info info-item">
+          由
+          <a target="_blank" href="https://hexo.io">Hexo</a>
+          驱动&nbsp;|&nbsp;主题&nbsp;<a
+            class="theme-version"
+            target="_blank"
+            href="https://github.com/XPoet/hexo-theme-keep"
+            >Keep v3.6.1</a
+          >
+        </div>
+
+        <div class="icp-info info-item">
+          <a target="_blank" rel="nofollow" href="https://beian.miit.gov.cn">
+            京ICP备19029015号-1
+          </a>
+        </div>
+      </div>
+    </footer>
+  </body>
+  <script src="1.js"></script>
+
+  <script>
+    let clickCount = 0;
+    let count;
+    let itemsPerPage = 4;
+    let currentPage = 1;
+    $(function () {
+      $(".tagcloud-container").hide();
+      $(".tagcloud-content").toggle();
+      $(".bx").click(function () {
+        $(".subject").hide();
+        $(".tagcloud-content").show();
+        $(".tagcloud-container").show();
+        // $(this).prev().$(".subject").show();
+      });
+      $(".sy").click(function () {
+        $(".subject").show();
+        $(".tagcloud-content").toggle();
+        $(".tagcloud-container").hide();
+        // $(this).prev().$(".subject").show();
+      });
+      // $(".nav li ").click(function () {
+      //   console.log(111111111111111111);
+      //   // $(".subject .subject1").hide().eq($(".nav li").index(this)).show();
+      //   // $(".subject1").removeClass("layui-show");
+      // });
+      if (clickCount == 0) {
+        $("#prev").toggle();
+      }
+
+      //滚动事件
+      $(window).on("mousewheel", function (e) {
+        var scrollTop = $(this).scrollTop();
+        if (scrollTop > 10) {
+          $(".navs").animate(
+            {
+              height: "70px",
+            },
+            500
+          );
+          $(".navs h1").animate(
+            {
+              "font-size": "25px",
+            },
+            500
+          );
+        } else {
+          $(".navs").animate(
+            {
+              height: "100px",
+            },
+            500
+          );
+          $(".navs h1").animate(
+            {
+              "font-size": "40px",
+            },
+            500
+          );
+        }
+      });
+
+      //点击事件
+
+      $("#next1").on("click", () => {
+        $("#prev").show();
+        const maxPage = Math.ceil(arr.length / itemsPerPage);
+        if (currentPage < maxPage) {
+          currentPage++;
+          btn();
+        }
+      });
+      $("#prev").on("click", () => {
+        if (currentPage > 1) {
+          currentPage--;
+          btn();
+        }
+      });
+
+      btn();
+      //渲染函数
+      fun();
+
+      //标签
+      $(".tagcloud-content a").click(function (e) {
+        e.preventDefault();
+        // console.log($(this).html());
+        let res = arr.filter((item) => {
+          return item.label == $(this).html();
+        });
+        let html = "";
+        res.forEach((item) => {
+          html += `
+          <div class="tagcloud-content" style="margin-top:150px">
+                 <div class="no1">
+            <h1 style="margin:30px 10px"><a href="#">${item.title}</a></h1>
+            <p>${item.user}</p>
+            <span>
+              <i
+                class="layui-icon layui-icon-time"
+                style="font-size: 15px; color: #01080e"
+              ></i
+              >&nbsp;${item.time}&nbsp;个月前</span
+            >
+            <span>
+              <i
+                class="layui-icon layui-icon-rate-half"
+                style="font-size: 15px; color: #01080e"
+              ></i
+              >&nbsp;<a href="" class="ss">${item.label}</a></span
+            >
+          </div>
+          </div>
+            `;
+        });
+        $("#bx").html(html);
+
+        $(".no1 a").on("click", function (e) {
+          e.preventDefault();
+          console.log($(this).html());
+          // arr.forEach((item) => {
+          //   if (item.title == $(this).html()) {
+          //     let id = $(this).html();
+          //     location.href = `/xiangnu2/${item.id}.html`;
+          //   }
+          // });
+          res.forEach((item) => {
+            if (item.title == $(this).html()) {
+              let id = $(this).html();
+              location.href = `/xiangnu2/${item.id}.html`;
+            }
+          });
+        });
+      });
+    });
+    function btn() {
+      let tmp = [];
+      const startIndex = (currentPage - 1) * itemsPerPage;
+      const endIndex = startIndex + itemsPerPage;
+      const itemsToShow = arr.slice(startIndex, endIndex);
+      for (let i = 0; i < itemsToShow.length; i++) {
+        const itemText = itemsToShow[i];
+        tmp.push(itemText);
+      }
+      if (tmp[0].id == 1) {
+        $("#prev").hide();
+      } else {
+        $("#prev").show();
+      }
+      if (tmp.length < 4) {
+        //最后一页
+        $("#next1").hide();
+      } else {
+        $("#next1").show();
+      }
+
+      fun(tmp);
+    }
+    function fun(n = arr1) {
+      let html = "";
+      n.forEach((item, index) => {
+        html += `
+           <div class="no1">
+            <h1 style="margin:30px 10px"><a href="">${item.title}</a></h1>
+            <p>${item.user}</p>
+            <span>
+              <i
+                class="layui-icon layui-icon-time"
+                style="font-size: 15px; color: #01080e"
+              ></i
+              >&nbsp;${item.time}&nbsp;个月前</span
+            >
+            <span>
+              <i
+                class="layui-icon layui-icon-rate-half"
+                style="font-size: 15px; color: #01080e"
+              ></i
+              >&nbsp;<a href="" class="ss">${item.label}</a></span
+            >
+          </div>
+
+              `;
+        // /xiangnu2/kaifa.html
+      });
+      $("#subject2").html(html);
+      //
+      $(".no1 a").on("click", function (e) {
+        e.preventDefault();
+        console.log($(this).html());
+        // arr.forEach((item) => {
+        //   if (item.title == $(this).html()) {
+        //     let id = $(this).html();
+        //     location.href = `/xiangnu2/${item.id}.html`;
+        //   }
+        // });
+        n.forEach((item) => {
+          if (item.title == $(this).html()) {
+            let id = $(this).html();
+            location.href = `/xiangnu2/${item.id}.html`;
+          }
+        });
+      });
+    }
+  </script>
+</html>

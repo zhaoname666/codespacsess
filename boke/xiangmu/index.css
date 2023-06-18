@@ -1,0 +1,95 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  overflow-y: scroll;
+  cursor: pointer;
+}
+
+.navs {
+  z-index: 10;
+  position: fixed;
+  top: 1px;
+  width: 100%;
+  height: 100px;
+  background-color: white;
+  box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.5);
+}
+.navs h1 {
+  width: 300px;
+  transform: translate(600px, 20px);
+  font-size: 40px;
+}
+.navs .nav-no1 {
+  width: 400px;
+  height: 50px;
+  float: right;
+  margin-right: 200px;
+  margin-top: -30px;
+}
+.navs li:hover {
+  color: #31bdec;
+  border-bottom: 5px solid #31bdec;
+}
+
+.subject {
+  position: relative;
+  overflow: hidden;
+  padding-bottom: 50px;
+}
+.subject button:hover {
+  background-color: #31bdec;
+}
+.subject #prev {
+  position: absolute;
+  left: 400px;
+}
+.subject #next1 {
+  margin-left: 1300px;
+}
+
+#subject2 {
+  width: 100%;
+  margin-top: 120px;
+}
+#subject2 .no1:hover {
+  width: 805px;
+  box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.5);
+}
+#subject2 .no1 {
+  width: 800px;
+  padding: 20px;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.5);
+  margin: 50px auto;
+}
+#subject2 h1, #subject2 p {
+  margin: 20px;
+}
+#subject2 span {
+  margin-left: 20px;
+}
+#subject2 a:hover {
+  color: #31bdec;
+}
+
+.tagcloud-container {
+  height: 800px;
+}
+
+.tagcloud-content {
+  width: 500px;
+  margin-left: 700px;
+  margin-top: 200px;
+  padding: 30px;
+  box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.5);
+}
+.tagcloud-content .tagcloud-content:hover {
+  width: 520px;
+}
+.tagcloud-content a:hover {
+  color: #31bdec;
+}
+
+/*# sourceMappingURL=index.css.map */

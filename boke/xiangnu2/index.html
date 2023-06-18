@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <link rel="stylesheet" href="./1.css" />
+  <body>
+    <div class="progress-bar-container">
+      <span class="pjax-progress-bar"></span>
+      <i class="pjax-progress-icon fas fa-circle-notch fa-spin"></i>
+    </div>
+
+    <main class="page-container">
+      <div class="page-main-content is-home">
+        <div class="page-main-content-top">
+          <header class="header-wrapper">
+            <div class="header-content">
+              <div class="left">
+                <a class="logo-title" href="/"> 程序员小明 </a>
+              </div>
+
+              <div class="right">
+                <div class="pc">
+                  <ul class="menu-list">
+                    <li class="menu-item">
+                      <a class="active" href="/"> 首页 </a>
+                    </li>
+
+                    <li class="menu-item">
+                      <a class="" href="#"> 标签 </a>
+                    </li>
+
+                    <li class="menu-item">
+                      <a class="" href="#"> 发布文章 </a>
+                    </li>
+
+                    <li class="menu-item search search-popup-trigger">
+                      <i class="fas fa-search"></i>
+                    </li>
+                  </ul>
+                </div>
+                <div class="mobile">
+                  <div class="icon-item search search-popup-trigger">
+                    <i class="fas fa-search"></i>
+                  </div>
+
+                  <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="header-drawer">
+              <ul class="drawer-menu-list">
+                <li class="drawer-menu-item flex-center">
+                  <a class="active">首页</a>
+                </li>
+                <li class="drawer-menu-item flex-center">
+                  <a class="" href="#">标签</a>
+                </li>
+                <li class="drawer-menu-item flex-center">
+                  <a class="" href="#">发布文章</a>
+                </li>
+                <li class="drawer-menu-item flex-center">
+                  <a class="" href="#">发布文章</a>
+                </li>
+              </ul>
+            </div>
+
+            <div class="window-mask"></div>
+          </header>
+        </div>
+
+        <div class="page-main-content-middle">
+          <div class="main-content">
+            <div class="home-content-container fade-in-down-animation">
+              <div
+                class="layui-tab-item layui-show subject1"
+                style="display: block"
+              >
+                <div id="subject2"></div>
+                <button
+                  type="button"
+                  class="layui-btn layui-btn-primary layui-btn-radius"
+                  id="prev"
+                >
+                  上一页
+                </button>
+                <button
+                  type="button"
+                  class="layui-btn layui-btn-primary layui-btn-radius"
+                  id="next1"
+                >
+                  下一页
+                </button>
+              </div>
+
+              <div class="home-paginator">
+                <div class="paginator">
+                  <a class="next btn" href="/page/2/">下一页</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="page-main-content-bottom">
+          <footer class="footer">
+            <div class="info-container">
+              <div class="copyright-info info-item">
+                &copy;
+
+                <span>2018</span> - 2023 &nbsp;<i
+                  class="fas fa-heart icon-animate"
+                ></i>
+                &nbsp;<a href="/">小明</a>
+              </div>
+
+              <script
+                async
+                data-pjax
+                src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"
+              ></script>
+              <div class="website-count info-item">
+                访问人数&nbsp;<span id="busuanzi_value_site_uv"></span>&ensp;
+                总访问量&nbsp;<span id="busuanzi_value_site_pv"></span>
+              </div>
+
+              <div class="theme-info info-item">
+                由
+                <a target="_blank" href="https://hexo.io">Hexo</a>
+                驱动&nbsp;|&nbsp;主题&nbsp;<a
+                  class="theme-version"
+                  target="_blank"
+                  href="https://github.com/XPoet/hexo-theme-keep"
+                  >Keep v3.6.1</a
+                >
+              </div>
+
+              <div class="icp-info info-item">
+                <a
+                  target="_blank"
+                  rel="nofollow"
+                  href="https://beian.miit.gov.cn"
+                >
+                  京ICP备19029015号-1
+                </a>
+              </div>
+            </div>
+          </footer>
+        </div>
+      </div>
+
+      <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+          <ul class="side-tools-list">
+            <li class="tools-item tool-font-adjust-plus flex-center">
+              <i class="fas fa-search-plus"></i>
+            </li>
+
+            <li class="tools-item tool-font-adjust-minus flex-center">
+              <i class="fas fa-search-minus"></i>
+            </li>
+
+            <li class="tools-item tool-dark-light-toggle flex-center">
+              <i class="fas fa-moon"></i>
+            </li>
+
+            <!-- rss -->
+
+            <li class="tools-item rss flex-center">
+              <a class="flex-center" href="/atom.xml" target="_blank">
+                <i class="fas fa-rss"></i>
+              </a>
+            </li>
+
+            <li class="tools-item tool-scroll-to-top flex-center">
+              <i class="fas fa-arrow-up"></i>
+            </li>
+
+            <li class="tools-item tool-scroll-to-bottom flex-center">
+              <i class="fas fa-arrow-down"></i>
+            </li>
+          </ul>
+
+          <ul class="exposed-tools-list">
+            <li class="tools-item tool-toggle-show flex-center">
+              <i class="fas fa-cog fa-spin"></i>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="zoom-in-image-mask">
+        <img class="zoom-in-image" />
+      </div>
+
+      <div class="search-pop-overlay">
+        <div class="popup search-popup">
+          <div class="search-header">
+            <span class="search-input-field-pre">
+              <i class="fas fa-keyboard"></i>
+            </span>
+            <div class="search-input-container">
+              <input
+                autocomplete="off"
+                autocorrect="off"
+                autocapitalize="off"
+                placeholder="搜索..."
+                spellcheck="false"
+                type="search"
+                class="search-input"
+              />
+            </div>
+            <span class="close-popup-btn">
+              <i class="fas fa-times"></i>
+            </span>
+          </div>
+          <div id="search-result">
+            <div id="no-result">
+              <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <script src="/js/utils.js"></script>
+
+    <script src="/js/main.js"></script>
+
+    <script src="/js/header-shrink.js"></script>
+
+    <script src="/js/back2top.js"></script>
+
+    <script src="/js/dark-light-toggle.js"></script>
+
+    <script src="/js/local-search.js"></script>
+
+    <script src="/js/lazyload.js"></script>
+
+    <div class="post-scripts pjax"></div>
+
+    <script src="/js/libs/pjax.min.js"></script>
+    <script>
+      function fun(n = arr1) {
+        let html = "";
+        n.forEach((item, index) => {
+          html += `
+           <div class="no1">
+            <h1><a href="#">${item.title}</a></h1>
+            <p>${item.user}</p>
+            <span>
+              <i
+                class="layui-icon layui-icon-time"
+                style="font-size: 15px; color: #01080e"
+              ></i
+              >&nbsp;${item.time}&nbsp;个月前</span
+            >
+            <span>
+              <i
+                class="layui-icon layui-icon-file"
+                style="font-size: 15px; color: #01080e"
+              ></i
+              >&nbsp;<a href="">${item.label[2]}</a></span
+            >
+            <span>
+              <i
+                class="layui-icon layui-icon-rate-half"
+                style="font-size: 15px; color: #01080e"
+              ></i
+              >&nbsp;<a href="">${item.label[1]}</a></span
+            >
+          </div>
+
+              `;
+        });
+        $("#subject2").html(html);
+      }
+    </script>
+    <script>
+      window.addEventListener("DOMContentLoaded", () => {
+        window.pjax = new Pjax({
+          selectors: ["head title", ".page-container", ".pjax"],
+          history: true,
+          debug: false,
+          cacheBust: false,
+          timeout: 0,
+          analytics: false,
+          currentUrlFullReload: false,
+          scrollRestoration: false,
+          // scrollTo: true,
+        });
+
+        document.addEventListener("pjax:send", () => {
+          KEEP.utils.pjaxProgressBarStart();
+        });
+
+        document.addEventListener("pjax:complete", () => {
+          KEEP.utils.pjaxProgressBarEnd();
+          window.pjax.executeScripts(
+            document.querySelectorAll("script[data-pjax], .pjax script")
+          );
+          KEEP.refresh();
+        });
+      });
+    </script>
+  </body>
+</html>
